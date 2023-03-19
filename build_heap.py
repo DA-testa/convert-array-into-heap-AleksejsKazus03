@@ -1,25 +1,28 @@
 # python3
 
-def sift_down(data, swaps, i):
-    n = len(data)
-    min_index = i
-    l = 2 * i + 1
-    if l < n and data[l] < data[min_index]:
-        min_index = l
-    r = 2 * i + 2
-    if r < n and data[r] < data[min_index]:
-        min_index = r
-    if i != min_index:
-        data[i], data[min_index] = data[min_index], data[i]
-        swaps.append((i, min_index))
-        sift_down(data, swaps, min_index)
+def heap(data,a, i, swaps):
+
+    len1=i2+1
+    len2=i2+2
+    res=i
+    if len1<a and data[len1]<data[res]:
+        res=len1
+    if len2<a and data[len2]<data[res]:
+        res=len2
+    if res!=i:
+        swaps.append((i,res))
+        data[i], data[res]=data[res],data[i]
+        heap(data, a, res, swaps)
+
         
 def build_heap(data):
-     n = len(data)
     swaps = []
-    for i in range(n // 2, -1, -1):
-        sift_down(data, swaps, i)
+    a=len(data)
+    for i in range(a//2-1,-1,-1):
+        heap(data, a, i, swaps)
+ 
     return swaps
+
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
 
@@ -35,14 +38,19 @@ def main():
 
 
     # input from keyboard
-   input_type = input().strip()
-    if input_type == 'I':
+   text=input()
+
+    if "I" in text:
         n = int(input())
         data = list(map(int, input().split()))
-    elif input_type == 'F':
-        with open('input.txt') as f:
-            n = int(f.readline())
-            data = list(map(int, f.readline().split()))
+    elif "F" in text:
+        fails=input()
+        with open("tests/" + fails, 'r') as fails:
+            n=int(fails.readline())
+            data=list(map(int, fails.readline().split()))
+    else:
+        print("error")
+        return
     # checks if lenght of data is the same as the said lenght
     assert len(data) == n
 
