@@ -23,12 +23,12 @@ def build_heap(data):
     return swaps    
 
 def main():
-    input=input()
+    text=input()
 
-    if "I" in input:    
+    if "I" in text:    
         n = int(input())
         data = list(map(int, input().split()))
-    elif "F" in input:
+    elif "F" in text:
         fails=input()
         with open("tests/" + fails, 'r') as fails:
             n=int(fails.readline())
