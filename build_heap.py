@@ -38,12 +38,12 @@ def main():
 
 
     # input from keyboard
-   text=input()
+   teksts=input()
 
-    if "I" in text:
+    if "I" in teksts:
         n = int(input())
         data = list(map(int, input().split()))
-    elif "F" in text:
+    elif "F" in teksts:
         fails=input()
         with open("tests/" + fails, 'r') as fails:
             n=int(fails.readline())
