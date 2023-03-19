@@ -1,9 +1,9 @@
 # python3
 
 def heap(data,a, i, swaps):
-
-    len1=i2+1
-    len2=i2+2
+    
+    len1=i*2+1
+    len2=i*2+2
     res=i
     if len1<a and data[len1]<data[res]:
         res=len1
@@ -20,12 +20,12 @@ def build_heap(data):
     for i in range(a//2-1,-1,-1):
         heap(data, a, i, swaps)
  
-    return swaps
+    return swaps    
 
 def main():
     teksts=input()
 
-    if "I" in teksts:
+    if "I" in teksts:    
         n = int(input())
         data = list(map(int, input().split()))
     elif "F" in teksts:
